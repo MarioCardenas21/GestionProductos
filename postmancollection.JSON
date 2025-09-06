@@ -1,0 +1,68 @@
+{
+  "info": {
+    "name": "Tarea 7 - API Productos",
+    "_postman_id": "b4a12345-6789-4def-9012-abcdef123456",
+    "description": "Colección para probar el CRUD y búsqueda avanzada de productos en NestJS.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Crear producto",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Guitarra Fender\",\n  \"descripcion\": \"Guitarra eléctrica profesional\",\n  \"precio\": 1500.75,\n  \"stock\": 10,\n  \"sku\": \"FDR-001\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/productos", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["productos"] }
+      }
+    },
+    {
+      "name": "Listar productos",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/productos", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["productos"] }
+      }
+    },
+    {
+      "name": "Obtener producto por ID",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/productos/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["productos", "1"] }
+      }
+    },
+    {
+      "name": "Actualizar producto",
+      "request": {
+        "method": "PATCH",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"precio\": 1800,\n  \"stock\": 8\n}"
+        },
+        "url": { "raw": "http://localhost:3000/productos/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["productos", "1"] }
+      }
+    },
+    {
+      "name": "Eliminar producto",
+      "request": {
+        "method": "DELETE",
+        "url": { "raw": "http://localhost:3000/productos/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["productos", "1"] }
+      }
+    },
+    {
+      "name": "Buscar productos (paginación y filtros)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"page\": 1,\n  \"limit\": 5,\n  \"sortBy\": \"precio\",\n  \"order\": \"DESC\",\n  \"filters\": {\n    \"nombre\": \"guitarra\"\n  }\n}"
+        },
+        "url": { "raw": "http://localhost:3000/productos/search", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["productos", "search"] }
+      }
+    }
+  ]
+}
+
